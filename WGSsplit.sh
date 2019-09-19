@@ -8,9 +8,14 @@ bam='.bam'
 con=con
 for (( i = 0; i < 24; i++ )); do
 	echo $chr${aNUMlist[i]}$bam
+	samtools view -b -h R19026469LD01-T0502-CAR_sorted_dedup_realign.bam $chr$${aNUMlist[i]} > $chr${aNUMlist[i]}$bam
+done
+for (( i = 0; i < 24; i++ )); do
+	echo $chr${aNUMlist[i]}$bam
 	samtools index $chr${aNUMlist[i]}$bam
 done
 for (( i = 0; i < 24; i++ )); do
+	echo $chr${aNUMlist[i]}$con$bam
 	samtools view -b -h R19026468LD01-T0501-MOCK_sorted_dedup_realign.bam $chr$${aNUMlist[i]} > $chr${aNUMlist[i]}$con$bam
 done
 for (( i = 0; i < 24; i++ )); do
